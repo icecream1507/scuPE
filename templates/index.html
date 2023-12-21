@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>SCU体育理论考试答案查询</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>SCU体育理论考试答案查询</h1>
+        <p>
+            在下方搜索栏中输入题目关键词，点击查询，即可获得选项和答案。注意：
+            <ol>
+                <li>题库可能不全</li>
+                <li>答案仅供参考</li>
+                <li>选项顺序可能不一致</li>
+                <li>仅供学习交流使用，请认真诚信对待体育理论考试</li>
+                <li>本站作者不对使用本站产生的任何后果负责</li>
+                <li>使用查询即代表了解并同意上述内容</li>
+            </ol>
+        </p>
+        <form method="post" action="/">
+            <label for="keyword">关键词：</label>
+            <input type="text" name="keyword" required>
+            <button type="submit">查询</button>
+        </form>
+
+        {% if records %}
+        <h2>查询结果：</h2>
+        <table border="1">
+            <tr>
+                <th>题目</th>
+                <th>选项</th>
+                <th>答案</th>
+            </tr>
+            {% for record in records %}
+            <tr>
+                <td>{{ record[0] }}</td>
+                <td>{{ record[1] }}</td>
+                <td>{{ record[2] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+    <div class="author-info">
+        <p>made by Ted Fu</p>
+        <p>QQ: 1330493178 | email: fu.boyu@icloud.com</p>
+    </div>
+</body>
+
+</html>
